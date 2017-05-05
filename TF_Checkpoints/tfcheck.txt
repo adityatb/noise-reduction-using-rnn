@@ -1,0 +1,2 @@
+This folder contains all the graphs saved by the training script 'LSTM_Train.py'. After Training is complete, a FINAL file is created
+which is used by the Test script to clean noise from the test dataset
