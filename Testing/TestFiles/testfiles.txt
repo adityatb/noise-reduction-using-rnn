@@ -1,1 +1,0 @@
-The Test files are assembled here, by moving 1000 files from the training dataset folder.

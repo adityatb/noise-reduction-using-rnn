@@ -1,1 +1,0 @@
-The testing script 'LSTM_TEST.py', writes the outputs in this folder

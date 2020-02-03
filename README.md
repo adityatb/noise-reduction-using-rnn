@@ -1,16 +1,21 @@
 # Noise Reduction using RNNs with Tensorflow
-Implements python programs to train and test a Recurrent Neural Network with Tensorflow
+Implements python programs to train and test a Recurrent Neural Network with Tensorflow. This program is adapted from the methodology applied for Singing Voice separation, and can easily be modified to train a source separation example using the MIR-1k dataset.
 
 ## Instructions
-Before running the programs, some pre-requisites are required. This code is developed for Python 2.7, with numpy, and scipy (v0.19) libraries installed. In addition, Tensorflow v1.1 is required. It is recommended to create a virtualenv with all the dependencies for smooth execution.
+Before running the programs, some pre-requisites are required. This code is developed for Python 3, with numpy, and scipy (v0.19) libraries installed. In addition, Tensorflow v1.2 is required. The code is setup to be executable directly on FloydHub servers using the commands in the comments at the top of the script.
 
 This project additionally relies on the MIR-1k dataset, which isn't packed into this git repo due to its large size. It can be downloaded here freely: http://mirlab.org/dataSet/public/MIR-1K_for_MIREX.rar
 
-Once downloaded and unpacked, the '.wav' files are placed in the 'Wavs' directory within the folder containing the scripts.
+If running on FloydHub, the complete MIR-1K dataset is already publicly available at:
+https://www.floydhub.com/adityatb/datasets/mymir/2:mymir
 
+A shorter version of the dataset is also available for debugging, before deploying completely:
+https://www.floydhub.com/adityatb/datasets/mymir/1:mymir
 
-The program contains 4 scripts, which are run in the following order.
-1. 'sumaudio.py' - Creates a training set in the '/Training/NoiseAdded/' directory using the voice data of MIR-1k and the Noises provided in the 'Noises' directory
-2. 'CreateTest.py' - Separates 1000 random files from the Training directory and moves them to the test folder for later testing.
-3. 'LSTM_Train.py' - Begins to train an LSTM network with the files in the training folder, and saves the tensorflow graphs in the Testing directories.
-4. 'LSTM_Testing.py' - Once testing is complete, the graph is saved as 'FINAL' in the '/TF_Checkpoints/' directory, and invoked by this script. Files in the testing directory are now fed into the graph to produce outputs.
+The scripts are Tensorboard active, so you can track accuracy and loss in realtime, to evaluate the training. The data written to the logs folder is read by Tensorboard.
+
+If running on your local machine, the MIR-1k dataset will need to be downloaded and setup one level up:
+Dataset: "../input/mir1k/MIR-1k/"
+Noises: "../input/mir1k/MIR-1k/Noises"
+
+Lastly: TrainNet.py runs the training on the dataset and logs metrics to TensorBoard.
